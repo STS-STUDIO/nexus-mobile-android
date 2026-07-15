@@ -100,7 +100,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "org.angelauramc.amethyst"
+        applicationId "org.stsstudio.nexusmobile"
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 10000000
