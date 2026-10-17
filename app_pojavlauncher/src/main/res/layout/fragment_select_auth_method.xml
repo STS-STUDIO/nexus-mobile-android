@@ -4,52 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
     android:background="@color/background_app"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:paddingHorizontal="@dimen/fragment_padding_medium">
+    android:padding="@dimen/_12sdp">
 
-    <View
-        android:id="@+id/login_menu"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_200sdp"
-
-        android:background="@drawable/background_card"
-        android:translationZ="-1dp"
-
+    <!-- Center Card -->
+    <LinearLayout
+        android:id="@+id/login_card"
+        android:layout_width="@dimen/_380sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_bg_dark"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_24sdp"
+        android:paddingVertical="@dimen/_18sdp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-    <com.kdt.mcgui.MineButton
-        android:id="@+id/button_microsoft_authentication"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Microsoft Account"
-        android:textSize="@dimen/_12ssp"
-        android:layout_marginHorizontal="@dimen/_25sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
-        app:layout_constraintBottom_toTopOf="@+id/button_local_authentication"
-        app:layout_constraintEnd_toEndOf="@+id/login_menu"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/login_menu"
-        app:layout_constraintTop_toTopOf="@id/login_menu"
-        app:layout_constraintVertical_chainStyle="packed"
-        />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-    <com.kdt.mcgui.MineButton
-        android:id="@+id/button_local_authentication"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Local account"
-        android:textSize="@dimen/_12ssp"
-        android:layout_marginHorizontal="@dimen/_25sdp"
-        app:layout_constraintBottom_toBottomOf="@id/login_menu"
-        app:layout_constraintEnd_toEndOf="@+id/login_menu"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/login_menu"
-        app:layout_constraintTop_toBottomOf="@+id/button_microsoft_authentication" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ACCOUNT LOGIN"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14ssp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Select how you want to play Nexus Mobile"
+                    android:textColor="#A0A0B8"
+                    android:textSize="@dimen/_9ssp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_back_auth"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_28sdp"
+                android:background="#2E2B45"
+                android:text="← BACK"
+                android:textColor="#C5C2E0"
+                android:textSize="@dimen/_9ssp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:background="#2E2B45" />
+
+        <!-- Microsoft Button -->
+        <Button
+            android:id="@+id/button_microsoft_authentication"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_38sdp"
+            android:background="#0078D4"
+            android:text="Sign in with Microsoft"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="@dimen/_11ssp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="@dimen/_6sdp"
+            android:text="— OR —"
+            android:textColor="#6C6985"
+            android:textSize="@dimen/_9ssp" />
+
+        <!-- Cracked / Freemode Button -->
+        <Button
+            android:id="@+id/button_local_authentication"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_38sdp"
+            android:background="#6C5CE7"
+            android:text="Cracked / Freemode"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="@dimen/_11ssp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -99,8 +99,13 @@ public class LauncherActivity extends BaseActivity {
     private final FragmentManager.FragmentLifecycleCallbacks mFragmentCallbackListener = new FragmentManager.FragmentLifecycleCallbacks() {
         @Override
         public void onFragmentResumed(@NonNull FragmentManager fm, @NonNull Fragment f) {
-            mSettingsButton.setImageDrawable(ContextCompat.getDrawable(getBaseContext(), f instanceof MainMenuFragment
-                    ? R.drawable.ic_menu_settings : R.drawable.ic_menu_home));
+            boolean isMainMenu = f instanceof MainMenuFragment;
+            if (mAccountSpinner != null) mAccountSpinner.setVisibility(isMainMenu ? View.GONE : View.VISIBLE);
+            if (mSettingsButton != null) {
+                mSettingsButton.setVisibility(isMainMenu ? View.GONE : View.VISIBLE);
+                mSettingsButton.setImageDrawable(ContextCompat.getDrawable(getBaseContext(), isMainMenu
+                        ? R.drawable.ic_menu_settings : R.drawable.ic_menu_home));
+            }
         }
     };
 

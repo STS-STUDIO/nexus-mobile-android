@@ -31,7 +31,8 @@ jar {
             "lwjgl-shaderc.jar",
             "lwjgl-spvc.jar",
             "lwjgl-vma.jar",
-            "lwjgl-vulkan.jar"
+            "lwjgl-vulkan.jar",
+            "lwjgl-sdl.jar"
     ]
 
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE

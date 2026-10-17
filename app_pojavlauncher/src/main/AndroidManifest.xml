@@ -21,6 +21,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:name=".PojavApplication"
@@ -47,7 +48,9 @@
             android:name=".TestStorageActivity"
             android:exported="true"
             android:label="@string/app_short_name"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:screenOrientation="sensorLandscape"
+            android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|keyboard|navigation|uiMode">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,7 +60,9 @@
         <activity
             android:name=".LauncherActivity"
             android:label="@string/app_short_name"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="sensorLandscape"
+            android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|keyboard|navigation|uiMode"/>
         <activity
             android:name=".ImportControlActivity"
             android:configChanges="keyboard|keyboardHidden"
@@ -122,6 +127,16 @@
             <intent-filter>
                 <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
             </intent-filter>
+        </provider>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.nexusupdateprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/nexus_update_paths" />
         </provider>
 
         <service android:name=".services.ProgressService"

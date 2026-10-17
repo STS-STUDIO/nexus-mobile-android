@@ -6,59 +6,101 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_app"
-    android:paddingHorizontal="@dimen/fragment_padding_medium"
-    >
+    android:padding="@dimen/_12sdp">
 
-    <View
-        android:id="@+id/login_menu"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_200sdp"
-
-        android:background="@drawable/background_card"
-        android:translationZ="-1dp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Center Card -->
+    <LinearLayout
+        android:id="@+id/login_card"
+        android:layout_width="@dimen/_380sdp"
         android:layout_height="wrap_content"
-        android:text="@string/login_online_username_hint"
-
-        app:layout_constraintBottom_toTopOf="@+id/login_edit_email"
-        app:layout_constraintStart_toStartOf="@+id/login_edit_email" />
-
-
-    <com.kdt.mcgui.MineEditText
-        android:id="@+id/login_edit_email"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_37sdp"
-
-        android:layout_marginHorizontal="@dimen/_25sdp"
-
-        android:layout_marginTop="@dimen/_60sdp"
-        android:imeOptions="flagNoExtractUi"
-        android:inputType="textEmailAddress"
-        android:textSize="@dimen/_16ssp"
-
-        app:layout_constraintEnd_toEndOf="@+id/login_menu"
-        app:layout_constraintStart_toStartOf="@+id/login_menu"
-        app:layout_constraintTop_toTopOf="@+id/login_menu"
-        app:layout_constraintVertical_bias="0.251" />
-
-    <com.kdt.mcgui.MineButton
-        android:id="@+id/login_button"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_42sdp"
-        android:layout_marginHorizontal="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/padding_heavy"
-        android:onClick="loginMC"
-        android:text="@string/login_online_login_label"
-
-        android:textColor="@android:color/white"
+        android:background="@drawable/card_bg_dark"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_24sdp"
+        android:paddingVertical="@dimen/_18sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_edit_email" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CRACKED / FREEMODE"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14ssp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Choose any username to play instantly"
+                    android:textColor="#A0A0B8"
+                    android:textSize="@dimen/_9ssp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_back_local"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_28sdp"
+                android:background="#2E2B45"
+                android:text="← BACK"
+                android:textColor="#C5C2E0"
+                android:textSize="@dimen/_9ssp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:background="#2E2B45" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PLAYER USERNAME"
+            android:textColor="#6C5CE7"
+            android:textStyle="bold"
+            android:textSize="@dimen/_8ssp"
+            android:letterSpacing="0.05" />
+
+        <com.kdt.mcgui.MineEditText
+            android:id="@+id/login_edit_email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_38sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:background="@drawable/background_card"
+            android:hint="e.g. Steve"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="textVisiblePassword"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#5A5775"
+            android:textSize="@dimen/_12ssp" />
+
+        <com.kdt.mcgui.MineButton
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_38sdp"
+            android:layout_marginTop="@dimen/_14sdp"
+            android:background="#6C5CE7"
+            android:text="PLAY NOW  ➔"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/_11ssp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

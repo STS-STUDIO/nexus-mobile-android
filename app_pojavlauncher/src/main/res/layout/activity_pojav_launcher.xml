@@ -9,21 +9,23 @@
     <com.kdt.mcgui.mcAccountSpinner
         android:id="@+id/account_spinner"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_52sdp"
+        android:layout_height="@dimen/_36sdp"
 
         android:dropDownWidth="@dimen/_250sdp"
-        android:dropDownVerticalOffset="@dimen/_52sdp"
+        android:dropDownVerticalOffset="@dimen/_36sdp"
+        android:visibility="gone"
 
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/setting_button"
-        android:layout_width="@dimen/_52sdp"
-        android:layout_height="@dimen/_52sdp"
+        android:layout_width="@dimen/_36sdp"
+        android:layout_height="@dimen/_36sdp"
         android:background="?attr/selectableItemBackground"
         android:src="@drawable/ic_menu_settings"
         android:scaleType="fitCenter"
-        android:paddingVertical="@dimen/_8sdp"
+        android:paddingVertical="@dimen/_6sdp"
+        android:visibility="gone"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/progress_layout"
-        app:layout_constraintTop_toBottomOf="@+id/account_spinner" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.kdt.mcgui.ProgressLayout
@@ -44,8 +46,5 @@
         android:layout_height="wrap_content"
 
         app:layout_constraintBottom_toBottomOf="parent" />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

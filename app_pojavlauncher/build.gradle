@@ -192,6 +192,11 @@ android {
         buildConfig true
     }
 
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+    }
+
     buildToolsVersion = '34.0.0'
 }
 

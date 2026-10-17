@@ -17,6 +17,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         LocaleUtils.setLocale(this);
         Tools.setFullscreen(this, setFullscreen());
         Tools.updateWindowSize(this);

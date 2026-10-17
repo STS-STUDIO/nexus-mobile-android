@@ -1,142 +1,1352 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/fragment_menu_main"
-	android:gravity="top"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:orientation="vertical"
-	android:background="@color/background_app"
-	>
-	<ScrollView
-		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintBottom_toTopOf="@id/mc_version_spinner">
-		<androidx.constraintlayout.widget.ConstraintLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content">
-			<androidx.constraintlayout.widget.Guideline
-				android:id="@+id/center_guideline"
-				android:layout_width="0dp"
-				android:layout_height="0dp"
-				android:orientation="vertical"
-				app:layout_constraintGuide_percent="0.5"/>
-			<com.kdt.mcgui.LauncherMenuButton
-				android:id="@+id/news_button"
-				style="@style/LauncherMenuButton.Universal"
-				android:layout_width="0dp"
-				android:text="@string/mcl_tab_wiki"
-				android:drawableStart="@drawable/ic_menu_news"
-				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintEnd_toStartOf="@id/social_divider" />
-			<View
-				android:id="@+id/social_divider"
-				style="@style/LauncherFragment_Divider"
-				android:layout_marginVertical="@dimen/padding_large"
-				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintStart_toStartOf="@id/center_guideline"
-				app:layout_constraintEnd_toEndOf="@id/center_guideline"
-				app:layout_constraintBottom_toBottomOf="@id/news_button"/>
-			<com.kdt.mcgui.LauncherMenuButton
-				android:id="@+id/discord_button"
-				style="@style/LauncherMenuButton.Universal"
-				android:layout_width="0dp"
-				android:text="@string/mcl_button_discord"
-				android:drawableStart="@drawable/ic_discord"
-				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintStart_toEndOf="@id/social_divider"
-				app:layout_constraintEnd_toEndOf="parent"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_menu_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0814">
 
+    <!-- ============================================================= -->
+    <!-- LEFT NAVIGATION SIDEBAR (Desktop Parity)                     -->
+    <!-- ============================================================= -->
+    <LinearLayout
+        android:id="@+id/sidebar_container"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#0E0B1A"
+        android:paddingHorizontal="@dimen/_4sdp"
+        android:paddingVertical="@dimen/_6sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-			<com.kdt.mcgui.LauncherMenuButton
-				android:id="@+id/custom_control_button"
-				style="@style/LauncherMenuButton.Universal"
-				android:layout_width="match_parent"
-				android:drawableStart="@drawable/ic_menu_custom_controls"
-				android:text="@string/mcl_option_customcontrol"
-				app:layout_constraintTop_toBottomOf="@id/news_button" />
+        <!-- Logo & Branding -->
+        <LinearLayout
+            android:id="@+id/logo_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingBottom="@dimen/_6sdp">
 
-			<com.kdt.mcgui.LauncherMenuButton
-				android:id="@+id/install_jar_button"
-				style="@style/LauncherMenuButton.Universal"
-				android:layout_width="match_parent"
-				android:drawableStart="@drawable/ic_menu_install_jar"
-				android:text="@string/main_install_jar_file"
-				app:layout_constraintTop_toBottomOf="@id/custom_control_button" />
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/nexus_n_logo"
+                android:scaleType="fitCenter" />
 
-			<com.kdt.mcgui.LauncherMenuButton
-				android:id="@+id/share_logs_button"
-				style="@style/LauncherMenuButton.Universal"
-				android:layout_width="match_parent"
-				android:drawableStart="@android:drawable/ic_menu_share"
-				android:text="@string/main_share_logs"
-				app:layout_constraintTop_toBottomOf="@id/install_jar_button" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="NEXUS"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="@dimen/_7ssp"
+                android:letterSpacing="0.05" />
 
-			<com.kdt.mcgui.LauncherMenuButton
-				android:id="@+id/open_files_button"
-				style="@style/LauncherMenuButton.Universal"
-				android:layout_width="match_parent"
-				android:drawableStart="@drawable/ic_folder"
-				android:text="@string/mcl_button_open_directory"
-				app:layout_constraintTop_toBottomOf="@id/share_logs_button" />
-		</androidx.constraintlayout.widget.ConstraintLayout>
-	</ScrollView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="by STS STUDIO"
+                android:textColor="#7A729A"
+                android:textSize="@dimen/_5ssp" />
+        </LinearLayout>
 
-	<com.kdt.mcgui.mcVersionSpinner
-		android:id="@+id/mc_version_spinner"
-		android:layout_width="0dp"
-		android:layout_height="@dimen/_52sdp"
-		android:background="@android:color/transparent"
-		android:drawableEnd="@drawable/spinner_arrow"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#1E1935"
+            android:layout_marginBottom="@dimen/_4sdp" />
 
-		app:drawableEndSize="@dimen/padding_heavy"
-		app:drawableStartIntegerScaling="true"
-		app:drawableStartSize="@dimen/_36sdp"
-		app:drawableEndPadding="@dimen/_1sdp"
+        <!-- Vertical Nav Buttons -->
+        <!-- Home (Active) -->
+        <LinearLayout
+            android:id="@+id/nav_btn_home"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_24sdp"
+            android:background="@drawable/bg_nav_pill_active"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_6sdp"
+            android:layout_marginBottom="3dp">
 
-		app:layout_constraintBottom_toTopOf="@id/play_button"
-		app:layout_constraintEnd_toStartOf="@+id/edit_profile_button"
-		app:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                android:layout_width="@dimen/_11sdp"
+                android:layout_height="@dimen/_11sdp"
+                android:src="@drawable/ic_nav_home"
+                app:tint="#FFFFFF" />
 
-	<ImageButton
-		android:id="@+id/edit_profile_button"
-		android:layout_width="@dimen/_52sdp"
-		android:layout_height="@dimen/_52sdp"
-		android:background="?android:attr/selectableItemBackground"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="Home"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="@dimen/_7ssp" />
+        </LinearLayout>
 
-		android:src="@drawable/ic_edit_profile"
-		app:layout_constraintBottom_toBottomOf="@+id/mc_version_spinner"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintTop_toTopOf="@+id/mc_version_spinner" />
+        <!-- Play -->
+        <LinearLayout
+            android:id="@+id/nav_btn_play"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_22sdp"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_6sdp"
+            android:layout_marginBottom="2dp">
 
+            <ImageView
+                android:layout_width="@dimen/_11sdp"
+                android:layout_height="@dimen/_11sdp"
+                android:src="@drawable/ic_nav_play"
+                app:tint="#8F87B2" />
 
-	<!-- This view is for cosmetic purpose only -->
-	<View
-		android:id="@+id/_background_display_view"
-		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:background="@color/background_bottom_bar"
-		android:translationZ="-1dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="Play"
+                android:textColor="#8F87B2"
+                android:textSize="@dimen/_7ssp" />
+        </LinearLayout>
 
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintTop_toTopOf="@id/mc_version_spinner" />
+        <!-- Library -->
+        <LinearLayout
+            android:id="@+id/nav_btn_library"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_22sdp"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_6sdp"
+            android:layout_marginBottom="2dp">
 
-	<com.kdt.mcgui.MineButton
-		android:id="@+id/play_button"
-		android:layout_width="match_parent"
-		android:layout_height="@dimen/_62sdp"
+            <ImageView
+                android:layout_width="@dimen/_11sdp"
+                android:layout_height="@dimen/_11sdp"
+                android:src="@drawable/ic_nav_library"
+                app:tint="#8F87B2" />
 
-		android:layout_marginHorizontal="@dimen/_17sdp"
-		android:layout_marginBottom="@dimen/_15sdp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="Library"
+                android:textColor="#8F87B2"
+                android:textSize="@dimen/_7ssp" />
+        </LinearLayout>
 
-		android:textAllCaps="true"
-		android:text="@string/main_play"
-		app:layout_constraintBottom_toBottomOf="parent"
-		/>
+        <!-- Mods -->
+        <LinearLayout
+            android:id="@+id/nav_btn_mods"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_22sdp"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_6sdp"
+            android:layout_marginBottom="2dp">
+
+            <ImageView
+                android:layout_width="@dimen/_11sdp"
+                android:layout_height="@dimen/_11sdp"
+                android:src="@drawable/ic_nav_mods"
+                app:tint="#8F87B2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="Mods"
+                android:textColor="#8F87B2"
+                android:textSize="@dimen/_7ssp" />
+        </LinearLayout>
+
+        <!-- Servers -->
+        <LinearLayout
+            android:id="@+id/nav_btn_servers"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_22sdp"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_6sdp"
+            android:layout_marginBottom="2dp">
+
+            <ImageView
+                android:layout_width="@dimen/_11sdp"
+                android:layout_height="@dimen/_11sdp"
+                android:src="@drawable/ic_nav_servers"
+                app:tint="#8F87B2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="Servers"
+                android:textColor="#8F87B2"
+                android:textSize="@dimen/_7ssp" />
+        </LinearLayout>
+
+        <!-- Store -->
+        <LinearLayout
+            android:id="@+id/nav_btn_store"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_22sdp"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_6sdp"
+            android:layout_marginBottom="2dp">
+
+            <ImageView
+                android:layout_width="@dimen/_11sdp"
+                android:layout_height="@dimen/_11sdp"
+                android:src="@drawable/ic_nav_store"
+                app:tint="#8F87B2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="Store"
+                android:textColor="#8F87B2"
+                android:textSize="@dimen/_7ssp" />
+        </LinearLayout>
+
+        <!-- Settings -->
+        <LinearLayout
+            android:id="@+id/nav_btn_settings"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_22sdp"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_6sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_11sdp"
+                android:layout_height="@dimen/_11sdp"
+                android:src="@drawable/ic_nav_settings"
+                app:tint="#8F87B2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="Settings"
+                android:textColor="#8F87B2"
+                android:textSize="@dimen/_7ssp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Account Badge (Bottom Sidebar) -->
+        <LinearLayout
+            android:id="@+id/chip_active_account"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_26sdp"
+            android:background="@drawable/bg_account_chip"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_4sdp">
+
+            <ImageView
+                android:id="@+id/img_account_avatar"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
+                android:src="@drawable/ic_launcher_monochrome"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_account_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Player"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_6ssp"
+                    android:singleLine="true"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/txt_account_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="● Online"
+                    android:textColor="#00E676"
+                    android:textSize="@dimen/_5ssp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="›"
+                android:textColor="#7A729A"
+                android:textSize="@dimen/_9ssp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Vertical Divider -->
+    <View
+        android:id="@+id/sidebar_divider"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#1C1733"
+        app:layout_constraintStart_toEndOf="@+id/sidebar_container"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- ============================================================= -->
+    <!-- MAIN SCROLLABLE DASHBOARD (Center & Right Columns)           -->
+    <!-- ============================================================= -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/main_scroll_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingHorizontal="@dimen/_8sdp"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_36sdp"
+        app:layout_constraintStart_toEndOf="@+id/sidebar_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- CENTER MAIN COLUMN -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.6"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/_6sdp">
+
+                <!-- HERO BANNER CARD -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/card_hero_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_110sdp"
+                    android:background="@drawable/bg_hero_card"
+                    android:padding="@dimen/_10sdp">
+
+                    <!-- Background Wallpaper Preview -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/minecraft_bg"
+                        android:scaleType="centerCrop"
+                        android:alpha="0.22"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <!-- Welcome Title -->
+                    <TextView
+                        android:id="@+id/txt_welcome_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Welcome back,\nPlayer!"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txt_welcome_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Play. Explore. Build. Together."
+                        android:textColor="#B0A8D4"
+                        android:textSize="@dimen/_6ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_welcome_title" />
+
+                    <!-- Active Version Chip (Top Right of Hero) -->
+                    <LinearLayout
+                        android:id="@+id/btn_hero_version_pill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_18sdp"
+                        android:background="@drawable/bg_chip_version"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="@dimen/_6sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="5dp"
+                            android:background="@drawable/bg_chip_online" />
+
+                        <TextView
+                            android:id="@+id/txt_hero_version_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="Nexus 1.21.11 Active ›"
+                            android:textColor="#BB86FC"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_6ssp" />
+                    </LinearLayout>
+
+                    <!-- Big Pill Play Button -->
+                    <Button
+                        android:id="@+id/btn_hero_play"
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:background="@drawable/bg_purple_pill_button"
+                        android:text="▶  Play"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_8ssp"
+                        android:elevation="6dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- ACTIVE PROFILE & VERSION STRIP -->
+                <LinearLayout
+                    android:id="@+id/strip_version_selector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- Profile Info Box -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_weight="1.4"
+                        android:background="@drawable/bg_quick_access_card"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="@dimen/_6sdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_16sdp"
+                            android:layout_height="@dimen/_16sdp"
+                            android:src="@drawable/nexus_n_logo" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txt_strip_version_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Nexus 1.21.11"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/_7ssp" />
+
+                            <TextView
+                                android:id="@+id/txt_strip_version_sub"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fabric 1.21.11 • Active"
+                                android:textColor="#00E676"
+                                android:textSize="@dimen/_5ssp" />
+                        </LinearLayout>
+
+                        <!-- Java / Bedrock Quick Toggle -->
+                        <Button
+                            android:id="@+id/btn_toggle_java"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_18sdp"
+                            android:background="@drawable/bg_nav_pill_active"
+                            android:text="Java"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_6ssp"
+                            android:paddingHorizontal="@dimen/_6sdp"
+                            android:layout_marginEnd="3dp" />
+
+                        <Button
+                            android:id="@+id/btn_toggle_bedrock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_18sdp"
+                            android:background="@drawable/bg_chip_tag"
+                            android:text="Bedrock"
+                            android:textColor="#A09BB8"
+                            android:textSize="@dimen/_6ssp"
+                            android:paddingHorizontal="@dimen/_6sdp" />
+                    </LinearLayout>
+
+                    <!-- Last Played Card -->
+                    <LinearLayout
+                        android:id="@+id/btn_last_played"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:background="@drawable/bg_quick_access_card"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="@dimen/_6sdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_16sdp"
+                            android:layout_height="@dimen/_16sdp"
+                            android:src="@drawable/ic_nav_worlds"
+                            app:tint="#BB86FC" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Last Played"
+                                android:textColor="#7A729A"
+                                android:textSize="@dimen/_5ssp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Survival World"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/_6ssp"
+                                android:singleLine="true" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2h ago ›"
+                            android:textColor="#7A729A"
+                            android:textSize="@dimen/_5ssp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- FEATURED SERVERS SECTION -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="★  Featured Servers"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_8ssp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/btn_view_all_servers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View All ›"
+                        android:textColor="#BB86FC"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_6ssp" />
+                </LinearLayout>
+
+                <!-- 4 Servers Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:orientation="horizontal">
+
+                    <!-- HyadesMC -->
+                    <LinearLayout
+                        android:id="@+id/card_server_hyades"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_62sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_server_card"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:layout_marginEnd="3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="HYADESMC"
+                            android:textColor="#60A5FA"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_7ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="● Online"
+                            android:textColor="#00E676"
+                            android:textSize="@dimen/_5ssp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_chip_tag"
+                                android:text="Java"
+                                android:textColor="#A09BB8"
+                                android:textSize="@dimen/_5ssp"
+                                android:paddingHorizontal="3dp"
+                                android:layout_marginEnd="2dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_chip_tag"
+                                android:text="Bedrock"
+                                android:textColor="#A09BB8"
+                                android:textSize="@dimen/_5ssp"
+                                android:paddingHorizontal="3dp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:text="2.4k+"
+                                android:textColor="#7A729A"
+                                android:textSize="@dimen/_5ssp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- CraftPort -->
+                    <LinearLayout
+                        android:id="@+id/card_server_craftport"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_62sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_server_card"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:layout_marginHorizontal="2dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CRAFTPORT"
+                            android:textColor="#FBBF24"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_7ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="● Online"
+                            android:textColor="#00E676"
+                            android:textSize="@dimen/_5ssp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_chip_tag"
+                                android:text="Java"
+                                android:textColor="#A09BB8"
+                                android:textSize="@dimen/_5ssp"
+                                android:paddingHorizontal="3dp"
+                                android:layout_marginEnd="2dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_chip_tag"
+                                android:text="Bedrock"
+                                android:textColor="#A09BB8"
+                                android:textSize="@dimen/_5ssp"
+                                android:paddingHorizontal="3dp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:text="1.8k+"
+                                android:textColor="#7A729A"
+                                android:textSize="@dimen/_5ssp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Enchanted -->
+                    <LinearLayout
+                        android:id="@+id/card_server_enchanted"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_62sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_server_card"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:layout_marginHorizontal="2dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ENCHANTED"
+                            android:textColor="#C084FC"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_7ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="● Online"
+                            android:textColor="#00E676"
+                            android:textSize="@dimen/_5ssp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_chip_tag"
+                                android:text="Java"
+                                android:textColor="#A09BB8"
+                                android:textSize="@dimen/_5ssp"
+                                android:paddingHorizontal="3dp"
+                                android:layout_marginEnd="2dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_chip_tag"
+                                android:text="Bedrock"
+                                android:textColor="#A09BB8"
+                                android:textSize="@dimen/_5ssp"
+                                android:paddingHorizontal="3dp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:text="1.2k+"
+                                android:textColor="#7A729A"
+                                android:textSize="@dimen/_5ssp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- BlockBuster -->
+                    <LinearLayout
+                        android:id="@+id/card_server_blockbuster"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_62sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_server_card"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_5sdp"
+                        android:layout_marginStart="3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BLOCKBUSTER"
+                            android:textColor="#F43F5E"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_7ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="● Online"
+                            android:textColor="#00E676"
+                            android:textSize="@dimen/_5ssp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_chip_tag"
+                                android:text="Java"
+                                android:textColor="#A09BB8"
+                                android:textSize="@dimen/_5ssp"
+                                android:paddingHorizontal="3dp"
+                                android:layout_marginEnd="2dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_chip_tag"
+                                android:text="Bedrock"
+                                android:textColor="#A09BB8"
+                                android:textSize="@dimen/_5ssp"
+                                android:paddingHorizontal="3dp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:text="856+"
+                                android:textColor="#7A729A"
+                                android:textSize="@dimen/_5ssp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- RIGHT COLUMN -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+                <!-- FEATURED SERVER CARD: BREEZEMC -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/card_featured_breezemc"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_68sdp"
+                    android:background="@drawable/card_bg_server"
+                    android:padding="@dimen/_6sdp">
+
+                    <TextView
+                        android:id="@+id/txt_featured_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#2E1C4D"
+                        android:text="FEATURED"
+                        android:textColor="#F59E0B"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_5ssp"
+                        android:paddingHorizontal="4dp"
+                        android:paddingVertical="1dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/img_bm_logo"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/nexus_n_logo"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_featured_tag" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toEndOf="@+id/img_bm_logo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_featured_tag">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BreezeMC"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_8ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lifesteal • Survival • Events"
+                            android:textColor="#9E96BE"
+                            android:textSize="@dimen/_5ssp" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btn_breezemc_play"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_20sdp"
+                        android:background="@drawable/bg_purple_pill_button"
+                        android:text="▶  Play"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_7ssp"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- QUICK ACCESS GRID (2x2) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:text="Quick Access"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_7ssp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal">
+
+                    <!-- Mods -->
+                    <LinearLayout
+                        android:id="@+id/btn_qa_mods"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_34sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_quick_access_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="3dp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_12sdp"
+                            android:layout_height="@dimen/_12sdp"
+                            android:src="@drawable/ic_nav_mods"
+                            app:tint="#A855F7" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Mods"
+                            android:textColor="#FFFFFF"
+                            android:textSize="@dimen/_6ssp" />
+                    </LinearLayout>
+
+                    <!-- Worlds -->
+                    <LinearLayout
+                        android:id="@+id/btn_qa_worlds"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_34sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_quick_access_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginStart="3dp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_12sdp"
+                            android:layout_height="@dimen/_12sdp"
+                            android:src="@drawable/ic_nav_worlds"
+                            app:tint="#3B82F6" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Worlds"
+                            android:textColor="#FFFFFF"
+                            android:textSize="@dimen/_6ssp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+
+                    <!-- Servers -->
+                    <LinearLayout
+                        android:id="@+id/btn_qa_servers"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_34sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_quick_access_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="3dp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_12sdp"
+                            android:layout_height="@dimen/_12sdp"
+                            android:src="@drawable/ic_nav_servers"
+                            app:tint="#10B981" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Servers"
+                            android:textColor="#FFFFFF"
+                            android:textSize="@dimen/_6ssp" />
+                    </LinearLayout>
+
+                    <!-- Store -->
+                    <LinearLayout
+                        android:id="@+id/btn_qa_store"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_34sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_quick_access_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginStart="3dp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_12sdp"
+                            android:layout_height="@dimen/_12sdp"
+                            android:src="@drawable/ic_nav_store"
+                            app:tint="#EC4899" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Store"
+                            android:textColor="#FFFFFF"
+                            android:textSize="@dimen/_6ssp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- NEWS & UPDATES CARD -->
+                <LinearLayout
+                    android:id="@+id/card_news_updates"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:background="@drawable/bg_quick_access_card"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_6sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="News &amp; Updates"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_7ssp" />
+
+                        <TextView
+                            android:id="@+id/btn_view_all_news"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View All ›"
+                            android:textColor="#BB86FC"
+                            android:textSize="@dimen/_5ssp" />
+                    </LinearLayout>
+
+                    <!-- News 1 -->
+                    <LinearLayout
+                        android:id="@+id/news_item_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nexus 0.1.3 Released"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_6ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bug fixes &amp; performance improvements. Oct 12, 2026 ›"
+                            android:textColor="#7A729A"
+                            android:textSize="@dimen/_5ssp" />
+                    </LinearLayout>
+
+                    <!-- News 2 -->
+                    <LinearLayout
+                        android:id="@+id/news_item_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Featured Server: HyadesMC"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_6ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="New partner added! Oct 10, 2026 ›"
+                            android:textColor="#7A729A"
+                            android:textSize="@dimen/_5ssp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- ============================================================= -->
+    <!-- FLOATING BOTTOM NAVIGATION CAPSULE (Landscape Floating Pill)  -->
+    <!-- ============================================================= -->
+    <LinearLayout
+        android:id="@+id/floating_bottom_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_28sdp"
+        android:background="@drawable/bg_floating_bottom_bar"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_6sdp"
+        android:elevation="12dp"
+        app:layout_constraintStart_toEndOf="@+id/sidebar_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Home (Active) -->
+        <LinearLayout
+            android:id="@+id/bottom_nav_home"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/bg_nav_pill_active"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_8sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:src="@drawable/ic_nav_home"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Home"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="@dimen/_6ssp" />
+        </LinearLayout>
+
+        <!-- Play -->
+        <LinearLayout
+            android:id="@+id/bottom_nav_play"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:layout_marginStart="4dp">
+
+            <ImageView
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:src="@drawable/ic_nav_play"
+                app:tint="#8F87B2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Play"
+                android:textColor="#8F87B2"
+                android:textSize="@dimen/_6ssp" />
+        </LinearLayout>
+
+        <!-- Library -->
+        <LinearLayout
+            android:id="@+id/bottom_nav_library"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:layout_marginStart="4dp">
+
+            <ImageView
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:src="@drawable/ic_nav_library"
+                app:tint="#8F87B2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Library"
+                android:textColor="#8F87B2"
+                android:textSize="@dimen/_6ssp" />
+        </LinearLayout>
+
+        <!-- Mods -->
+        <LinearLayout
+            android:id="@+id/bottom_nav_mods"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:layout_marginStart="4dp">
+
+            <ImageView
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:src="@drawable/ic_nav_mods"
+                app:tint="#8F87B2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Mods"
+                android:textColor="#8F87B2"
+                android:textSize="@dimen/_6ssp" />
+        </LinearLayout>
+
+        <!-- More -->
+        <LinearLayout
+            android:id="@+id/bottom_nav_more"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:layout_marginStart="4dp">
+
+            <ImageView
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:src="@drawable/ic_nav_more"
+                app:tint="#8F87B2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="More"
+                android:textColor="#8F87B2"
+                android:textSize="@dimen/_6ssp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ============================================================= -->
+    <!-- PRESERVED FUNCTIONAL VIEWS (Hidden / Hook Targets for Pojav)  -->
+    <!-- ============================================================= -->
+    <LinearLayout
+        android:id="@+id/layout_hidden_pojav_hooks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints">
+
+        <com.kdt.mcgui.mcVersionSpinner
+            android:id="@+id/mc_version_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button android:id="@+id/play_button" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/edit_profile_button" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_create_profile" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_copy_server_ip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/custom_control_button" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_ram_2g" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_ram_4g" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_ram_6g" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_copy_bedrock_ip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_launch_bedrock_app" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_bedrock_discord" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/news_button" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/discord_button" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/install_jar_button" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/share_logs_button" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/open_files_button" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_back_to_editions" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_select_java" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_select_bedrock" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_auth_ms" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_auth_cracked" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_top_check_update" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_top_discord" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:id="@+id/btn_top_switch_account" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/txt_header_title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/txt_header_edition" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <View android:id="@+id/card_select_java" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <View android:id="@+id/card_select_bedrock" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <View android:id="@+id/layout_edition_select" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <View android:id="@+id/layout_java_view" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <View android:id="@+id/layout_bedrock_view" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

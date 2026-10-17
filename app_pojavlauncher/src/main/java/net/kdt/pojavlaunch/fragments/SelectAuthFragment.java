@@ -26,6 +26,11 @@ public class SelectAuthFragment extends Fragment {
         Button mLocalButton = view.findViewById(R.id.button_local_authentication);
 
         mMicrosoftButton.setOnClickListener(v -> Tools.swapFragment(requireActivity(), MicrosoftLoginFragment.class, MicrosoftLoginFragment.TAG, null));
-        mLocalButton.setOnClickListener(v -> hasNoOnlineProfileDialog(requireActivity(), () -> Tools.swapFragment(requireActivity(), LocalLoginFragment.class, LocalLoginFragment.TAG, null)));
+        mLocalButton.setOnClickListener(v -> Tools.swapFragment(requireActivity(), LocalLoginFragment.class, LocalLoginFragment.TAG, null));
+
+        View btnBack = view.findViewById(R.id.button_back_auth);
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> Tools.swapFragment(requireActivity(), MainMenuFragment.class, MainMenuFragment.TAG, null));
+        }
     }
 }

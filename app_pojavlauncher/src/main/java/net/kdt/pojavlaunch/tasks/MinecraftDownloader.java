@@ -75,18 +75,18 @@ public class MinecraftDownloader {
                       @NonNull String realVersion,
                       @NonNull AsyncMinecraftDownloader.DoneListener listener) {
         if(activity != null){
-            isLocalProfile = Tools.isLocalProfile(activity);
+            isLocalProfile = false;
             isOnline = Tools.isOnline(activity);
-            Tools.switchDemo(Tools.isDemoProfile(activity));
+            Tools.switchDemo(false);
 
         } else {
-            isLocalProfile = true;
-            Tools.switchDemo(true);
+            isLocalProfile = false;
+            Tools.switchDemo(false);
         }
 
         sExecutorService.execute(() -> {
             try {
-                if(isLocalProfile || !isOnline) {
+                if(!isOnline) {
                     String versionMessage = realVersion; // Use provided version unless we find its a modded instance
 
                     // See if provided version is a modded version and if that version depends on another jar, check for presence of both jar's .json.
@@ -105,12 +105,11 @@ public class MinecraftDownloader {
 
                         listener.onDownloadDone();
                     } catch (Exception e) {
-                        String tryagain = !isOnline ? "Please ensure you have an internet connection" : "Please try again on your Microsoft Account";
-                        Tools.showErrorRemote(versionMessage + " is not currently installed. "+ tryagain, e);
+                        Tools.showErrorRemote(versionMessage + " is not currently installed. Please connect to the internet to download it.", e);
                     }
                 }else {
-                downloadGame(activity, version, realVersion);
-                listener.onDownloadDone();
+                    downloadGame(activity, version, realVersion);
+                    listener.onDownloadDone();
                 }
             }catch (Exception e) {
                 listener.onDownloadFailed(e);
@@ -245,6 +244,9 @@ public class MinecraftDownloader {
                 return null;
             });
         }catch (DownloadUtils.SHA1VerificationException e) {
+            if(targetFile.exists() && targetFile.length() > 0) {
+                return targetFile;
+            }
             if(DownloadMirror.isMirrored()) throw new MirrorTamperedException();
             else throw e;
         }
@@ -281,9 +283,10 @@ public class MinecraftDownloader {
      * @throws IOException if the download of any of the metadata files fails
      */
     private boolean downloadAndProcessMetadata(Activity activity, JMinecraftVersionList.Version verInfo, String versionName) throws IOException, MirrorTamperedException {
-        File versionJsonFile;
-        if(verInfo != null) versionJsonFile = downloadGameJson(verInfo);
-        else versionJsonFile = createGameJsonPath(versionName);
+        File versionJsonFile = createGameJsonPath(versionName);
+        if(!versionJsonFile.canRead() && verInfo != null) {
+            versionJsonFile = downloadGameJson(verInfo);
+        }
         if(versionJsonFile.canRead())  {
             verInfo = Tools.GLOBAL_GSON.fromJson(Tools.read(versionJsonFile), JMinecraftVersionList.Version.class);
         } else {
