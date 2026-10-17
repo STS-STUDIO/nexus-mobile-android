@@ -14,7 +14,7 @@
 
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@id/file_selector_create_folder"
-        app:layout_constraintTop_toBottomOf="@+id/file_selector_current_path" />
+        app:layout_constraintTop_toBottomOf="@+id/file_selector_header" />
 
     <com.kdt.mcgui.MineButton
         android:id="@+id/file_selector_select_folder"
@@ -47,16 +47,34 @@
         app:layout_constraintStart_toStartOf="parent"
          />
 
-    <TextView
-        android:id="@+id/file_selector_current_path"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/file_selector_header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:layout_marginTop="8dp"
-        android:text="."
-        android:textColor="@color/primary_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/file_selector_back_button"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back_white"
+            android:contentDescription="@string/global_back"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/file_selector_current_path"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="."
+            android:textColor="@color/primary_text" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

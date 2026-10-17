@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.kdt.pojavlaunch.R;
+import net.kdt.pojavlaunch.Tools;
 import net.kdt.pojavlaunch.modloaders.modpacks.ModItemAdapter;
 import net.kdt.pojavlaunch.modloaders.modpacks.api.CommonApi;
 import net.kdt.pojavlaunch.modloaders.modpacks.api.ModpackApi;
@@ -99,6 +100,11 @@ public class SearchModFragment extends Fragment implements ModItemAdapter.Search
                    mRecyclerview.getPaddingBottom());
         });
         mFilterButton.setOnClickListener(v -> displayFilterDialog());
+
+        View backButton = view.findViewById(R.id.search_mod_back);
+        if (backButton != null) {
+            backButton.setOnClickListener(v -> Tools.removeCurrentFragment(requireActivity()));
+        }
 
         searchMods(null);
     }

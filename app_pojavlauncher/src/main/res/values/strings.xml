@@ -94,6 +94,8 @@
     <string name="global_retry">Retry</string>
     <string name="global_default">Default</string>
     <string name="global_off">Off</string>
+    <string name="global_back">Back</string>
+    <string name="global_cancel">Cancel</string>
 
     <!-- MainActivity: strings -->
     <string name="mcn_exit_title">Application/Game exited with code %d, check latestlog.txt for more details.</string>

@@ -28,6 +28,20 @@
 
 
         >
+        <ImageButton
+            android:id="@+id/search_mod_back"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:minWidth="@dimen/_36sdp"
+            android:src="@drawable/ic_arrow_back_white"
+            android:paddingHorizontal="@dimen/padding_medium"
+            android:contentDescription="@string/global_back"
+            app:tint="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/search_mod_edittext"
+            app:layout_constraintBottom_toBottomOf="@id/search_mod_edittext" />
+
         <!-- Search text -->
         <EditText
             android:id="@+id/search_mod_edittext"
@@ -41,8 +55,9 @@
             android:hint="@string/hint_search_modpack"
             android:inputType="textPersonName"
             android:paddingHorizontal="@dimen/padding_heavy"
+            android:layout_marginStart="@dimen/padding_small"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/search_mod_back"
             app:layout_constraintEnd_toStartOf="@id/search_mod_filter"
             />
 

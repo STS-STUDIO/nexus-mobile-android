@@ -46,6 +46,10 @@ public abstract class ModVersionListFragment<T> extends Fragment implements Runn
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((TextView)view.findViewById(R.id.title_textview)).setText(getTitleText());
+        View backBtn = view.findViewById(R.id.mod_version_back_button);
+        if (backBtn != null) {
+            backBtn.setOnClickListener(v -> getParentFragmentManager().popBackStackImmediate());
+        }
         mProgressBar = view.findViewById(R.id.mod_dl_list_progress);
         mExpandableListView = view.findViewById(R.id.mod_dl_expandable_version_list);
         mExpandableListView.setOnChildClickListener(this);

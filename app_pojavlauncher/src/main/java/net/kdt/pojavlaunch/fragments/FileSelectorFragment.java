@@ -50,6 +50,10 @@ public class FileSelectorFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         bindViews(view);
         parseBundle();
+        View backBtn = view.findViewById(R.id.file_selector_back_button);
+        if (backBtn != null) {
+            backBtn.setOnClickListener(v -> Tools.removeCurrentFragment(requireActivity()));
+        }
         if(!mSelectFolder) mSelectFolderButton.setVisibility(View.GONE);
         else mSelectFolderButton.setVisibility(View.VISIBLE);
 

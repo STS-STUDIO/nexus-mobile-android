@@ -10,6 +10,34 @@
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/fragment_padding_medium">
 
+    <LinearLayout
+        android:id="@+id/modpack_create_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/padding_large"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/modpack_create_back_button"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back_white"
+            android:contentDescription="@string/global_back"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:text="@string/modpack_install_button" />
+    </LinearLayout>
+
     <View
         android:id="@+id/create_modpack_profile_menu"
         android:layout_width="match_parent"

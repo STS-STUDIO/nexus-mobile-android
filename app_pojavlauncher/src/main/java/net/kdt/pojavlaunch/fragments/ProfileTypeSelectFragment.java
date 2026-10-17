@@ -27,6 +27,10 @@ public class ProfileTypeSelectFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        View backBtn = view.findViewById(R.id.profile_type_back_button);
+        if (backBtn != null) {
+            backBtn.setOnClickListener(v -> Tools.removeCurrentFragment(requireActivity()));
+        }
         view.findViewById(R.id.vanilla_profile).setOnClickListener(v -> Tools.swapFragment(requireActivity(), ProfileEditorFragment.class,
                 ProfileEditorFragment.TAG, new Bundle(1)));
 

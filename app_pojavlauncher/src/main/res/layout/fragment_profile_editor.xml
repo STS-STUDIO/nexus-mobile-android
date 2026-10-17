@@ -6,8 +6,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_app"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/fragment_padding_medium"
+        android:paddingVertical="@dimen/_10sdp"
+        android:background="#161426">
+
+        <ImageButton
+            android:id="@+id/vprof_editor_back_button"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back_white"
+            android:contentDescription="@string/global_back"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:text="EDIT PROFILE"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -277,19 +304,27 @@
         android:layout_marginVertical="13dp"
         >
         <com.kdt.mcgui.MineButton
+            android:id="@+id/vprof_editor_cancel_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/global_cancel"
+            android:layout_marginEnd="@dimen/padding_small" />
+
+        <com.kdt.mcgui.MineButton
             android:id="@+id/vprof_editor_save_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/global_save"
-            android:layout_marginEnd="@dimen/padding_medium" />
+            android:layout_marginHorizontal="@dimen/padding_small" />
 
         <com.kdt.mcgui.MineButton
             android:id="@+id/vprof_editor_delete_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginStart="@dimen/padding_medium"
+            android:layout_marginStart="@dimen/padding_small"
             android:text="@string/global_delete" />
     </LinearLayout>
 </LinearLayout>

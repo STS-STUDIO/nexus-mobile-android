@@ -29,6 +29,10 @@ public class ModpackCreateFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        View backBtn = view.findViewById(R.id.modpack_create_back_button);
+        if (backBtn != null) {
+            backBtn.setOnClickListener(v -> Tools.removeCurrentFragment(requireActivity()));
+        }
         view.findViewById(R.id.button_browse_modpacks).setOnClickListener(v -> {
             tryInstall(SearchModFragment.class, SearchModFragment.TAG);
         });

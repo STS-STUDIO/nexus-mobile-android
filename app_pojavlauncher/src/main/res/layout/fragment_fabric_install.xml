@@ -8,24 +8,41 @@
     android:paddingHorizontal="@dimen/fragment_padding_medium">
 
 
-    <TextView
-        android:id="@+id/title_textview"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/fabric_header_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:layout_marginTop="@dimen/padding_large"
-        android:text="@string/fabric_dl_loader_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/fabric_install_back_button"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back_white"
+            android:contentDescription="@string/global_back"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/title_textview"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:text="@string/fabric_dl_loader_title" />
+    </LinearLayout>
 
     <View
         android:id="@+id/view"
         style="@style/ThickDivider"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/padding_large"
-        app:layout_constraintTop_toBottomOf="@+id/title_textview" />
+        app:layout_constraintTop_toBottomOf="@+id/fabric_header_layout" />
 
     <TextView
         android:id="@+id/fabric_installer_label_game_ver"
